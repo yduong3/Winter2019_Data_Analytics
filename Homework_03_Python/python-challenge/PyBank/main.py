@@ -26,14 +26,6 @@ with open(csvpath, newline="") as csvfile:
     max_increase_month = monthly_revenue_change.index(max(monthly_revenue_change)) + 1
     max_decrease_month = monthly_revenue_change.index(min(monthly_revenue_change)) + 1 
 
-print("Financial Analysis")
-print("----------------------------")
-print(f"Total Months: {len(total_months)}")
-print(f"Total: ${sum(total_revenue)}")
-print(f"Average Change: ${round(sum(monthly_revenue_change)/len(monthly_revenue_change),2)}")
-print(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
-print(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
-
 output_path = os.path.join("..", "PyBank", "main.txt")
 
 with open(output_path, 'w') as txtfile:
@@ -51,3 +43,6 @@ with open(output_path, 'w') as txtfile:
     txtfile.write(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
     txtfile.write("\n")
     txtfile.write(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
+
+with open(output_path, 'r') as readfile:
+    print(readfile.read())

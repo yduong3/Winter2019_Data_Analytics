@@ -3,63 +3,70 @@ import csv
 
 csvpath = os.path.join("..", "PyPoll", "election_data.csv")
 
+poll = {}
+
+total_votes = 0
+
 with open(csvpath, newline="") as csvfile:
-    csvreader = csv.Dictreader(csvfile, delimiter=",")
+    csvreader = csv.reader(csvfile, delimiter=",")
 
     csv_header = next(csvfile)
-
-    total_votes = 0
-    winner_votes = 0
-    total_candidates = 0
-    greatest_votes = ["", 0]
-    candidate_options = []
-    candidate_votes = {}
-
-    for row in reader:
-        total_votes = total_votes + 1
-        total_candidates = row["Candidate"]        
-
-        if row["Candidate"] not in candidate_options:
-            
-            candidate_options.append(row["Candidate"])
-
-            candidate_votes[row["Candidate"]] = 1
-            
+    
+    for row in csvreader:
+        total_votes += 1
+        
+        if row[2] in poll.keys():
+            poll[row[2]] = poll[row[2]] + 1
         else:
-            candidate_votes[row["Candidate"]] = candidate_votes[row["Candidate"]] + 1
+            poll[row[2]] = 1
+ 
+candidates = []
+num_votes = []
 
-    print("Election Results")
-    print("-------------------------")
-    print(f"Total Votes + {str(votes)}")
-    print("-------------------------")
+for key, value in poll.items():
+    candidates.append(key)
+    num_votes.append(value)
 
-    for candidate in candidate_votes:
-        print(candidate + " " + str(round(((candidate_votes[candidate]/total_votes)*100))) + "%" + " (" + str(candidate_votes[candidate]) + ")") 
-        candidate_results = (candidate + " " + str(round(((candidate_votes[candidate]/votes)*100))) + "%" + " (" + str(candidate_votes[candidate]) + ")") 
-    
-candidate_votes
+vote_percent = []
+for n in num_votes:
+    vote_percent.append(round(n/total_votes*100, 1))
 
-winner = sorted(candidate_votes.items(), key=itemgetter(1), reverse=True)
+clean_data = list(zip(candidates, num_votes, vote_percent))
 
-#results
-print("-------------------------")
-print(f"Winner: + {str(winner[0]}"))
-print("-------------------------")
+#creates winner_list to put winners (even if there is a tie)
+winner_list = []
 
-output_path = os.path.join("..", "PyPoll", "main.txt")
+for name in clean_data:
+    if max(num_votes) == name[1]:
+        winner_list.append(name[0])
 
-with open(output_path, 'w') as txtfile:
-    
-    txtfile.write("Financial Analysis")
+# makes winner_list a str with the first entry
+winner = winner_list[0]
+
+#only runs if there is a tie and puts additional winners into a string separated by commas
+if len(winner_list) > 1:
+    for w in range(1, len(winner_list)):
+        winner = winner + ", " + winner_list[w]
+
+#prints to file
+output_file = os.path.join("..", "PyPoll", "main.txt")
+
+with open(output_file, 'w') as txtfile:
+    txtfile.write("Election Results")
     txtfile.write("\n")
-    txtfile.write("----------------------------")
+    txtfile.write("-------------------------")
     txtfile.write("\n")
-    txtfile.write(f"Total Months: {len(total_months)}")
+    txtfile.write(f"Total Votes: {str(total_votes)}")
     txtfile.write("\n")
-    txtfile.write(f"Total: ${sum(total_revenue)}")
+    txtfile.write("-------------------------")
     txtfile.write("\n")
-    txtfile.write(f"Average Change: ${round(sum(monthly_revenue_change)/len(monthly_revenue_change),2)}")
+    for entry in clean_data:
+        txtfile.write(entry[0] + ": " + str(entry[2]) +'%  (' + str(entry[1]) + ')\n')
+    txtfile.write("------------------------")
     txtfile.write("\n")
-    txtfile.write(f"Greatest Increase in Profits: {total_months[max_increase_month]} (${(str(max_increase_value))})")
+    txtfile.write(f"Winner: {winner}")
     txtfile.write("\n")
-    txtfile.write(f"Greatest Decrease in Profits: {total_months[max_decrease_month]} (${(str(max_decrease_value))})")
+    txtfile.write("-------------------------")
+
+with open(output_file, 'r') as readfile:
+    print(readfile.read())
