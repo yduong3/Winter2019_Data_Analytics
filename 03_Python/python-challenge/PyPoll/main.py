@@ -20,22 +20,22 @@ with open(csvpath, newline="") as csvfile:
             poll[row[2]] = 1
  
 candidates = []
-num_votes = []
+candidate_votes = []
 
 for key, value in poll.items():
     candidates.append(key)
-    num_votes.append(value)
+    candidate_votes.append(value)
 
 vote_percent = []
-for votes in num_votes:
+for votes in candidate_votes:
     vote_percent.append(round(votes/total_votes*100, 1))
 
-candidate_data = list(zip(candidates, num_votes, vote_percent))
+candidate_data = list(zip(candidates, candidate_votes, vote_percent))
 
 winner_list = []
 
 for name in candidate_data:
-    if max(num_votes) == name[1]:
+    if max(candidate_votes) == name[1]:
         winner_list.append(name[0])
 
 winner = winner_list[0]
