@@ -51,8 +51,8 @@ with open(output_file, 'w') as txtfile:
     txtfile.write("\n")
     txtfile.write("-------------------------")
     txtfile.write("\n")
-    for entry in candidate_data:
-        txtfile.write(entry[0] + ": " + str(entry[2]) +'%  (' + str(entry[1]) + ')\n')
+    for data in candidate_data:
+        txtfile.write(data[0] + ": " + str(data[2]) +'%  (' + str(data[1]) + ')\n')
     txtfile.write("------------------------")
     txtfile.write("\n")
     txtfile.write(f"Winner: {winner}")
