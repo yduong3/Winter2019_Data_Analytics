@@ -33,22 +33,18 @@ for n in num_votes:
 
 clean_data = list(zip(candidates, num_votes, vote_percent))
 
-#creates winner_list to put winners (even if there is a tie)
 winner_list = []
 
 for name in clean_data:
     if max(num_votes) == name[1]:
         winner_list.append(name[0])
 
-# makes winner_list a str with the first entry
 winner = winner_list[0]
 
-#only runs if there is a tie and puts additional winners into a string separated by commas
 if len(winner_list) > 1:
     for w in range(1, len(winner_list)):
         winner = winner + ", " + winner_list[w]
 
-#prints to file
 output_file = os.path.join("..", "PyPoll", "main.txt")
 
 with open(output_file, 'w') as txtfile:
