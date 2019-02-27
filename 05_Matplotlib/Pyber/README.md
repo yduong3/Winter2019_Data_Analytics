@@ -268,17 +268,17 @@ rural = pyber_df[pyber_df["type"] == "Rural"]
 
 ```python
 # Obtain the x and y coordinates for each of the three city types
-urban_ride_count = urban.groupby(["city"]).count()["ride_id"]
-urban_fare_avg = urban.groupby(["city"]).mean()["fare"]
-urban_driver_count = urban.groupby(["city"]).mean()["driver_count"]
+urban_ride_count = urban.groupby(["city"])["ride_id"].count()
+urban_fare_avg = urban.groupby(["city"])["fare"].mean()
+urban_driver_count = urban.groupby(["city"])["driver_count"].mean()
 
-suburban_ride_count = suburban.groupby(["city"]).count()["ride_id"]
-suburban_fare_avg = suburban.groupby(["city"]).mean()["fare"]
-suburban_driver_count = suburban.groupby(["city"]).mean()["driver_count"]
+suburban_ride_count = suburban.groupby(["city"])["ride_id"].count()
+suburban_fare_avg = suburban.groupby(["city"])["fare"].mean()
+suburban_driver_count = suburban.groupby(["city"])["driver_count"].mean()
 
-rural_ride_count = rural.groupby(["city"]).count()["ride_id"]
-rural_fare_avg = rural.groupby(["city"]).mean()["fare"]
-rural_driver_count = rural.groupby(["city"]).mean()["driver_count"]
+rural_ride_count = rural.groupby(["city"])["ride_id"].count()
+rural_fare_avg = rural.groupby(["city"])["fare"].mean()
+rural_driver_count = rural.groupby(["city"])["driver_count"].mean()
 
 # Build the scatter plots for each city types
 plt.scatter(urban_ride_count, urban_fare_avg, s = urban_driver_count*10,
@@ -289,7 +289,6 @@ plt.scatter(suburban_ride_count, suburban_fare_avg, s = suburban_driver_count*10
 
 plt.scatter(rural_ride_count, rural_fare_avg, s = rural_driver_count*10,
             color = "gold", edgecolor = "black", label = "Rural", alpha = 0.75)
-
 
 # Incorporate the other graph properties
 plt.xlim(1, 41)
@@ -308,9 +307,6 @@ lgnd.legendHandles[2]._sizes = [30]
 
 # Incorporate a text label regarding circle size
 plt.annotate("Note: \nCircle size correlates with driver count per city.", xy=(30, 40), xytext=(42, 35))
-
-# Save Figure
-plt.savefig("pyber_bubble_plot.png", bbox_inches="tight")
 
 # Show plot
 plt.show()
