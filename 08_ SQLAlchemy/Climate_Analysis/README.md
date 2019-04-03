@@ -78,12 +78,12 @@ first_row.__dict__
 
 
 
-    {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState at 0x254f2fb3c18>,
+    {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState at 0x248f1a62cf8>,
+     'tobs': 65.0,
+     'date': '2010-01-01',
      'id': 1,
      'prcp': 0.08,
-     'station': 'USC00519397',
-     'tobs': 65.0,
-     'date': '2010-01-01'}
+     'station': 'USC00519397'}
 
 
 
@@ -97,13 +97,13 @@ first_row.__dict__
 
 
 
-    {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState at 0x254f2fc7b38>,
+    {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState at 0x248f1a78b70>,
+     'station': 'USC00519397',
      'longitude': -157.8168,
      'name': 'WAIKIKI 717.2, HI US',
      'id': 1,
      'elevation': 3.0,
-     'latitude': 21.2716,
-     'station': 'USC00519397'}
+     'latitude': 21.2716}
 
 
 
@@ -370,7 +370,7 @@ prcp_df.describe()
 
 ```python
 # Total number of stations
-session.query(func.count(Station.station)).all()
+session.query(func.count(Station.id)).all()
 ```
 
 
@@ -596,209 +596,3 @@ plt.show()
 
 ![png](output_45_0.png)
 
-
-## Daily Rainfall Average
-
-- Calculate the total amount of rainfall per weather station for your trip dates using the previous year's matching dates
-    - Sort this in descending order by precipitation amount and list the station, name, latitude, longitude, and elevation
-
-
-```python
-# Query to calculate the total rainfall per weather station using previous year's dates &
-# Sort this in descending order by precipitation amount
-sel = [Station.station, Station.name, Station.latitude, Station.longitude, 
-       Station.elevation, func.sum(Measurement.prcp)]
-
-total_rainfall = session.query(*sel).filter(Measurement.station == Station.station).\
-    filter(Measurement.date.between(prev_year_start,prev_year_end)).\
-    group_by(Station.station).order_by(func.sum(Measurement.prcp).desc()).all()
-
-print(total_rainfall)
-```
-
-    [('USC00519523', 'WAIMANALO EXPERIMENTAL FARM, HI US', 21.33556, -157.71139, 19.5, 0.61), ('USC00514830', 'KUALOA RANCH HEADQUARTERS 886.9, HI US', 21.5213, -157.8374, 7.0, 0.6), ('USC00516128', 'MANOA LYON ARBO 785.2, HI US', 21.3331, -157.8025, 152.4, 0.6), ('USC00513117', 'KANEOHE 838.1, HI US', 21.4234, -157.8015, 14.6, 0.35), ('USC00519281', 'WAIHEE 837.5, HI US', 21.45167, -157.84888999999998, 32.9, 0.2), ('USC00519397', 'WAIKIKI 717.2, HI US', 21.2716, -157.8168, 3.0, 0.0)]
-    
-
-- Calculate the daily normals. Normals are the averages for the min, avg, and max temperatures
-
-
-```python
-# Create a query that will calculate the daily normals 
-# (i.e. the averages for tmin, tmax, and tavg for all historic data matching a specific month and day)
-
-def daily_normals(date):
-    """Daily Normals.
-    
-    Args:
-        date (str): A date string in the format '%m-%d'
-        
-    Returns:
-        A list of tuples containing the daily normals, tmin, tavg, and tmax
-    
-    """
-    
-    sel = [func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)]
-    return session.query(*sel).filter(func.strftime("%m-%d", Measurement.date) == date).all()
-    
-daily_normals("01-01")
-```
-
-
-
-
-    [(62.0, 69.15384615384616, 77.0)]
-
-
-
-- Create a list of dates for your trip in the format %m-%d. Use the daily_normals function to calculate the normals for each date string and append the results to a list
-
-
-```python
-# Set the start and end date of the trip
-start_trip = dt.date(2018, 1, 1)
-end_trip = dt.date(2018, 1, 7)
-
-# Use the start and end date to create a range of dates
-date_range = pd.date_range(start_trip, end_trip)
-
-# Stip off the year and save a list of %m-%d strings
-date_list = [d.strftime("%m-%d") for d in date_range]
-
-# Loop through the list of %m-%d strings and calculate the normals for each date
-normal_temp = [daily_normals(d)[0] for d in date_list]
-normal_temp
-```
-
-
-
-
-    [(62.0, 69.15384615384616, 77.0),
-     (60.0, 69.39622641509433, 77.0),
-     (62.0, 68.9090909090909, 77.0),
-     (58.0, 70.0, 76.0),
-     (56.0, 67.96428571428571, 76.0),
-     (61.0, 68.96491228070175, 76.0),
-     (57.0, 68.54385964912281, 76.0)]
-
-
-
-- Load the list of daily normals into a Pandas DataFrame and set the index equal to the date
-
-
-```python
-# Load the previous query results into a Pandas DataFrame and add the `trip_dates` range as the `date` index
-normal_temp_df = pd.DataFrame(normal_temp, columns = ["tmin","tavg","tmax"], index=date_range)
-normal_temp_df.index.name = "date"
-normal_temp_df
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>tmin</th>
-      <th>tavg</th>
-      <th>tmax</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2018-01-01</th>
-      <td>62.0</td>
-      <td>69.153846</td>
-      <td>77.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-02</th>
-      <td>60.0</td>
-      <td>69.396226</td>
-      <td>77.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-03</th>
-      <td>62.0</td>
-      <td>68.909091</td>
-      <td>77.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-04</th>
-      <td>58.0</td>
-      <td>70.000000</td>
-      <td>76.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-05</th>
-      <td>56.0</td>
-      <td>67.964286</td>
-      <td>76.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-06</th>
-      <td>61.0</td>
-      <td>68.964912</td>
-      <td>76.0</td>
-    </tr>
-    <tr>
-      <th>2018-01-07</th>
-      <td>57.0</td>
-      <td>68.543860</td>
-      <td>76.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-- Use Pandas to plot an area plot (stacked=False) for the daily normals
-
-
-```python
-# To Use date tick labels
-import matplotlib.dates as mdates
-```
-
-
-```python
-fig, ax = plt.subplots()
-normal_temp_df.plot(kind = "area", stacked = False, alpha =0.2, ax=ax)
-plt.xlabel("Date")
-plt.ylabel("Temp (F)")
-plt.minorticks_off()
-ax.xaxis.set_ticklabels(normal_temp_df.index.date, rotation=30, ha="right")
-ax.xaxis.set_major_locator(mdates.DayLocator())
-plt.tight_layout()
-plt.show()
-```
-
-
-![png](output_57_0.png)
-
-
-
-```python
-
-```
