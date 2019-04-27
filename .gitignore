@@ -106,3 +106,9 @@ venv.bak/
 # API Keys
 *config.py
 *api_keys.py
+
+# vscode
+.vscode
+
+# Chrome Driver
+chromedriver.exe
