@@ -7,7 +7,7 @@ from splinter import Browser
 
 def init_browser():
     # choose the executable path to driver
-    executable_path = {"executable_path": "chromedriver.exe"}
+    executable_path = {"executable_path": "./chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
 
 
@@ -21,9 +21,9 @@ def scrape():
 	news_url = 'https://mars.nasa.gov/news'
 	browser.visit(news_url)
 	news_html = browser.html
-	nsoup = bs(news_html,'lxml')
-	news_title = nsoup.find('div', class_='content_title').text
-	news_p = nsoup.find('div', class_='article_teaser_body').text
+	news_soup = bs(news_html,'lxml')
+	news_title = news_soup.find('div', class_='content_title').text
+	news_p = news_soup.find('div', class_='article_teaser_body').text
 
 	# add title and summary to mars data dict
 	mars_data['news_title'] = news_title
@@ -65,7 +65,7 @@ def scrape():
 	fact_table = pd.read_html(fact_url)
 	mars_fact_table = fact_table[0]
 	mars_fact_table.columns = ['Description','Value']
-	mars_fact_table_html = mars_fact_table.to_html (header=True, index=False)
+	mars_fact_table_html = mars_fact_table.to_html (header=True, index=False, justify='center')
 	mars_fact_table_html = mars_fact_table_html.replace('\n', '')
 
 	# add facts table to mars data dict
@@ -98,3 +98,6 @@ def scrape():
 
 	# Return results
 	return mars_data
+
+if __name__ == "__main__":
+	scrape()
