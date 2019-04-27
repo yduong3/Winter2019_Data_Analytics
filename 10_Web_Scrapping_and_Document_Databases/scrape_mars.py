@@ -7,8 +7,8 @@ from splinter import Browser
 
 def init_browser():
     # choose the executable path to driver
-    executable_path = {"executable_path": "./chromedriver.exe"}
-    return Browser("chrome", **executable_path, headless=False)
+    executable_path = {'executable_path': './chromedriver.exe'}
+    return Browser('chrome', **executable_path, headless=False)
 
 
 def scrape():
