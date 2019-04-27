@@ -1,19 +1,19 @@
-# Import Dependecies 
+# import Dependecies 
+import pandas as pd
+import requests
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
-import pandas as pd 
-import requests
 
 
 def init_browser():
-    # Choose the executable path to driver
+    # choose the executable path to driver
     executable_path = {"executable_path": "chromedriver.exe"}
     return Browser("chrome", **executable_path, headless=False)
 
 
 def scrape():
 	browser = init_browser()
-	
+
 	# create surf_data dict that we can insert into mongo
 	mars_data = {}
 
@@ -25,11 +25,11 @@ def scrape():
 	news_title = nsoup.find('div', class_='content_title').text
 	news_p = nsoup.find('div', class_='article_teaser_body').text
 
-	# add title and summary to mars data
+	# add title and summary to mars data dict
 	mars_data['news_title'] = news_title
 	mars_data['summary'] = news_p
 
-
+	
 	# JPL Mars Space Images - Featured Image
 	jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
 	browser.visit(jpl_url)
@@ -39,7 +39,7 @@ def scrape():
 	base_link = 'https://www.jpl.nasa.gov'
 	featured_image_url = base_link + img_link
 
-	# add featured image to mars data
+	# add featured image to mars data dict
 	mars_data['featured_image'] = featured_image_url
 
 
@@ -57,7 +57,7 @@ def scrape():
 			continue
 	mars_weather = weather_tweet.replace("\n",", ")
 
-	# add weather to mars data
+	# add weather to mars data dict
 	mars_data['weather'] = mars_weather
 
 	# Mars Facts
@@ -68,7 +68,7 @@ def scrape():
 	mars_fact_table_html = mars_fact_table.to_html (header=True, index=False)
 	mars_fact_table_html = mars_fact_table_html.replace('\n', '')
 
-	# add facts table to mars data
+	# add facts table to mars data dict
 	mars_data['fact_table'] = mars_fact_table_html
 
 
@@ -89,7 +89,7 @@ def scrape():
 		img_url = hemispheres_main_url + hsoup.find('img', class_='wide-image')['src']
 		hemisphere_image_urls.append({"title" : title, "img_url" : img_url})
 
-	# add facts table to mars data
+	# add facts table to mars data dict
 	mars_data['hemisphere_image'] = hemisphere_image_urls
 
 
