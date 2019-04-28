@@ -28,20 +28,20 @@
                 <p>{{ mars.summary }}</p>
             </div>
         </div>
-        
+        <br>
+
         <div class="row">
         <!-- Featured Mars Image -->
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h3>Featured Mars Image</h3>
-                <img src="{{ mars.featured_image }}" style="max-width:125%; max-height: auto;" alt="Mars Featured Image">
-            </div>
-            <div class="col-md-2">
+                <img src="{{ mars.featured_image }}" style="max-width: 100%; max-height: auto;" alt="Mars Featured Image">
             </div>
 
             <!-- Mars Weather -->
             <div class="col-md-4">
                 <br>
-                <div class="container-fluid" style="border:2px solid #cecece;">  
+                <div class="container-fluid" style="border:2px solid #cecece;"> 
+                    <br> 
                     <h4>Current Weather on Mars</h4>
                     <p>{{ mars.weather }}</p>
                 </div>
@@ -61,14 +61,16 @@
                 <hr>
             </blockquote>
         </div>
-        <div class="card-deck">
+        <div class="card-deck d-flex justify-content-center">
             {% for hem in mars.hemisphere_image %}
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card" style="margin: 30px;">
                     <img class="card-img-top" src="{{ hem.img_url }}" alt="{{ hem.title }}">
                     <div class="card-body">
                         <p class="card-text">{{ hem.title }}</p>
                     </div>
+                </div>
+                <div class="col-md-2">
                 </div>
             </div>
             {% endfor %}
