@@ -8,7 +8,8 @@ console.log(tableData);
 // Get a reference to the table body
 var tbody = d3.select("tbody");
 
-// Function to loop through data to append row, iterate through values and append cell, 
+// Function to loop through data to append row,
+// iterate through values and append cell, 
 // Update each cell's text
 function renderTable(datas) {
     datas.forEach((data) => {
@@ -43,22 +44,31 @@ function filterButton() {
 
     var filteredDatas = data;
 
-    if (searchDate != ""){
-        filteredDatas = filteredDatas.filter(filterdata => filterdata.datetime === searchDate);
-    }
-    if (searchCity != ""){
-        filteredDatas = filteredDatas.filter(filterdata => filterdata.city.toLowerCase() === searchCity.toLowerCase());
-    }
-    if (searchState != ""){
-        filteredDatas = filteredDatas.filter(filterdata => filterdata.state.toLowerCase() === searchState.toLowerCase());
-    }
-    if (searchCountry != ""){
-        filteredDatas = filteredDatas.filter(filterdata => filterdata.country.toLowerCase() === searchCountry.toLowerCase());
-    }
-    if (searchShape != ""){
-        filteredDatas = filteredDatas.filter(filterdata => filterdata.shape.toLowerCase() === searchShape.toLowerCase());
-    }
+    if (searchDate != "") {
+        filteredDatas = filteredDatas.filter(filterdata =>
+            filterdata.datetime === searchDate);
+        }
 
+    if (searchCity != "") {
+        filteredDatas = filteredDatas.filter(filterdata => 
+            filterdata.city.toLowerCase() === searchCity.toLowerCase());
+        }
+
+    if (searchState != "") {
+        filteredDatas = filteredDatas.filter(filterdata => 
+            filterdata.state.toLowerCase() === searchState.toLowerCase());
+        }
+
+    if (searchCountry != "") {
+        filteredDatas = filteredDatas.filter(filterdata => 
+            filterdata.country.toLowerCase() === searchCountry.toLowerCase());
+        }
+
+    if (searchShape != "") {
+        filteredDatas = filteredDatas.filter(filterdata => 
+            filterdata.shape.toLowerCase() === searchShape.toLowerCase());
+        }
+    
     tbody.html("");
     renderTable(filteredDatas);
 }
