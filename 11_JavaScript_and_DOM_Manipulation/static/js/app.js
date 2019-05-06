@@ -14,10 +14,10 @@ function renderTable(datas) {
     datas.forEach((data) => {
     var row = tbody.append("tr");
     Object.values(data).forEach(value => {
-      var cell = row.append("td");
-      cell.text(value);
+        var cell = row.append("td");
+        cell.text(value);
     });
-  });
+});
 }
 
 // UFO sighting data in table
@@ -37,17 +37,17 @@ function filterButton() {
     // Get the value property of the input element
     var searchDate = d3.select("#datetime").property("value");
     var searchCity = d3.select("#city").property("value");
-	var searchState = d3.select("#state").property("value");
-	var searchCountry = d3.select("#country").property("value");
-	var searchShape = d3.select("#shape").property("value");
+    var searchState = d3.select("#state").property("value");
+    var searchCountry = d3.select("#country").property("value");
+    var searchShape = d3.select("#shape").property("value");
 
     var filteredDatas = data;
 
     if (searchDate != ""){
-    	filteredDatas = filteredDatas.filter(filterdata => filterdata.datetime === searchDate);
+        filteredDatas = filteredDatas.filter(filterdata => filterdata.datetime === searchDate);
     }
     if (searchCity != ""){
-    	filteredDatas = filteredDatas.filter(filterdata => filterdata.city.toLowerCase() === searchCity.toLowerCase());
+        filteredDatas = filteredDatas.filter(filterdata => filterdata.city.toLowerCase() === searchCity.toLowerCase());
     }
     if (searchState != ""){
         filteredDatas = filteredDatas.filter(filterdata => filterdata.state.toLowerCase() === searchState.toLowerCase());
@@ -62,6 +62,7 @@ function filterButton() {
     tbody.html("");
     renderTable(filteredDatas);
 }
+
 // Event listner for filter button
 filter.on("click", filterButton);
 
