@@ -2,8 +2,7 @@
 var tableData = data;
 
 // Console.log the ufo data
-console.log(tableData);
-
+console.table(tableData);
 
 // Get a reference to the table body
 var tbody = d3.select("tbody");
@@ -24,7 +23,6 @@ function renderTable(datas) {
 // UFO sighting data in table
 renderTable(tableData);
 
-
 // Select the filter button
 var filter = d3.select("#filter-btn");
 
@@ -41,6 +39,12 @@ function filterButton() {
     var searchState = d3.select("#state").property("value");
     var searchCountry = d3.select("#country").property("value");
     var searchShape = d3.select("#shape").property("value");
+
+    console.log(searchDate);
+    console.log(searchCity);
+    console.log(searchState);
+    console.log(searchCountry);
+    console.log(searchShape);
 
     var filteredDatas = data;
 
@@ -71,16 +75,16 @@ function filterButton() {
     
     tbody.html("");
     renderTable(filteredDatas);
+    console.log("Filter Table According to Search Input Above");
 }
 
 // Event listner for filter button
 filter.on("click", filterButton);
-
 
 // Select the reset button
 var reset = d3.select("#reset-btn");
 
 // Reset button handler
 reset.on("click", function() {
-    tbody.html(renderTable(tableData))
+    tbody.html(renderTable(tableData));
 });
