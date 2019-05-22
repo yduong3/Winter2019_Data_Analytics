@@ -108,7 +108,11 @@ venv.bak/
 *api_keys.py
 
 # vscode
-.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # Chrome Driver
 .exe
