@@ -4,6 +4,8 @@ JSON data was pulled from United States Geological Survey, or USGS for short for
 
 An additional tectonic plates layer was added to illustrate the relationship between tectonic plates and seismic activity.
 
+https://yduong3.github.io/Winter2019_Data_Analytics/14_Mapping_Web/USGS/index.html
+
 ---
 
 ![Final](Images/animated_final.gif)
