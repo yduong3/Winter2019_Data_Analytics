@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <link rel="dns-prefetch" href="https://github.githubassets.com">
+    <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+    <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+    <link crossorigin="anonymous" media="all" integrity="sha512-UDS3MR1FfvqHmqZAs2MWSDCWPwLemVRLqCwld4/zfwH0vhv7I6RYmDnMnNAVQKP1YYvqnccOCH4iOhFaUUyrjw==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-2e9090135c22aad5f56c2f72dcba7880.css" />
+    <link crossorigin="anonymous" media="all" integrity="sha512-D8GUhgLn0Pm94+eZHS2+GVyUSkcIQCn86Is/aPo/SqDdh84zzgsUc3pYlfSvK7YJvxqihMWsJET2Tsc6QOD5Ow==" rel="stylesheet" href="https://github.githubassets.com/assets/github-e0bb7eeb3d3f55bf57453459bf0da4e8.css" />
+    
+    <meta name="viewport" content="width=device-width">
+    <title>Winter2019_Data_Analytics/10_Web_Scrapping_and_Document_Databases at master · yduong3/Winter2019_Data_Analytics</title>
+    <meta name="description" content="Bootcamp. Contribute to yduong3/Winter2019_Data_Analytics development by creating an account on GitHub.">
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+
+    <meta name="twitter:image:src" content="https://avatars3.githubusercontent.com/u/43940252?s=400&amp;v=4" /><meta name="twitter:site" content="@github" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="yduong3/Winter2019_Data_Analytics" /><meta name="twitter:description" content="Bootcamp. Contribute to yduong3/Winter2019_Data_Analytics development by creating an account on GitHub." />
+    <meta property="og:image" content="https://avatars3.githubusercontent.com/u/43940252?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="yduong3/Winter2019_Data_Analytics" /><meta property="og:url" content="https://github.com/yduong3/Winter2019_Data_Analytics" /><meta property="og:description" content="Bootcamp. Contribute to yduong3/Winter2019_Data_Analytics development by creating an account on GitHub." />
+
+    <link rel="assets" href="https://github.githubassets.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6NDM5MjczNDMzOjBhY2Q2MmZjYzA5ZGE1ZDhhOWJmYzAxNTBlNjcyYjhhZDY1Nzk1NGE2MDA0MWFhOTU0YzJkNzQ3ZWEyZGQyMzg=--7638b543f62a46920be8363ec52bca1140480e54">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+    <meta name="request-id" content="D5F3:10E7:755E11:A8C9FE:5D657E45" data-pjax-transient>
+    <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+    <meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="D5F3:10E7:755E11:A8C9FE:5D657E45" /><meta name="octolytics-dimension-region_edge" content="iad" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-dimension-ga_id" content="" class="js-octo-ga-id" /><meta name="octolytics-dimension-visitor_id" content="7743793892710541097" /><meta name="octolytics-actor-id" content="43940252" /><meta name="octolytics-actor-login" content="yduong3" /><meta name="octolytics-actor-hash" content="e8dcaaf8b73efa1cf988b10cfb628ce7152f991322edcaa4bd76cb78c745ae45" />
+    <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/files/disambiguate" data-pjax-transient="true" />
+    <meta name="google-analytics" content="UA-3769691-2">
+    <meta class="js-ga-set" name="userId" content="5b6e65d7a809962cc21e596c2a3267b8">
+    <meta class="js-ga-set" name="dimension1" content="Logged In">
+    <meta name="hostname" content="github.com">
+    <meta name="user-login" content="yduong3">
+    <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="ZDgxMjNmMjViYjAzZjdiZGZmOGMzMzJmZTI3ZTQ2M2Q2Yjk5NmNjYTMyMTBlM2FkN2I4MjY4OWZlZThiMzZkNXx7InJlbW90ZV9hZGRyZXNzIjoiOTkuMjM4Ljg4LjIwMiIsInJlcXVlc3RfaWQiOiJENUYzOjEwRTc6NzU1RTExOkE4QzlGRTo1RDY1N0U0NSIsInRpbWVzdGFtcCI6MTU2NjkzMjU5MiwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+    <meta name="enabled-features" content="ACTIONS_V2_ON_MARKETPLACE,MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS,NOTIFY_ON_BLOCK,RELATED_ISSUES,GHE_CLOUD_TRIAL">
+    <meta name="html-safe-nonce" content="3c121b36e528ac42093e3b81b4e3c89f2e09a2b4">
+    <meta http-equiv="x-pjax-version" content="db80b986772a400b5c56114c390a8a02">
+    <link href="https://github.com/yduong3/Winter2019_Data_Analytics/commits/master.atom" rel="alternate" title="Recent Commits to Winter2019_Data_Analytics:master" type="application/atom+xml">
+    <meta name="go-import" content="github.com/yduong3/Winter2019_Data_Analytics git https://github.com/yduong3/Winter2019_Data_Analytics.git">
+    <meta name="octolytics-dimension-user_id" content="43940252" /><meta name="octolytics-dimension-user_login" content="yduong3" /><meta name="octolytics-dimension-repository_id" content="166560309" /><meta name="octolytics-dimension-repository_nwo" content="yduong3/Winter2019_Data_Analytics" /><meta name="octolytics-dimension-repository_public" content="true" /><meta name="octolytics-dimension-repository_is_fork" content="false" /><meta name="octolytics-dimension-repository_network_root_id" content="166560309" /><meta name="octolytics-dimension-repository_network_root_nwo" content="yduong3/Winter2019_Data_Analytics" /><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false" />
+    <link rel="canonical" href="https://github.com/yduong3/Winter2019_Data_Analytics/tree/master/10_Web_Scrapping_and_Document_Databases" data-pjax-transient>
+    <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+    <meta name="webauthn-auth-enabled" content="true">
+    <meta name="webauthn-registration-enabled" content="true">
+    <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
+</head>
+
+<body class="logged-in env-production min-width-lg">
+    <div class="Box-body">
+        <article class="markdown-body entry-content p-5" itemprop="text"><h1><a id="user-content-mission-to-mars" class="anchor" aria-hidden="true" href="#mission-to-mars"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mission to Mars</h1>
+            <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/yduong3/Winter2019_Data_Analytics/tree/master/10_Web_Scrapping_and_Document_Databases"><img src="Images/mission_to_mars.jpg" alt="mission_to_mars" style="max-width:100%;"></a></p>
+            <p>Build a web application that scrapes various websites for data related to the Mission to Mars and display the information in a single HTML page.</p>
+            <div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Declare Dependencies </span>
+                <span class="pl-k">import</span> requests
+                <span class="pl-k">import</span> pandas <span class="pl-k">as</span> pd
+                <span class="pl-k">from</span> splinter <span class="pl-k">import</span> Browser
+                <span class="pl-k">from</span> bs4 <span class="pl-k">import</span> BeautifulSoup 
+                <span class="pl-k">as</span> bs</pre></div>
+                <div class="highlight highlight-source-python"><pre><span class="pl-c">
+                    <span class="pl-c">#</span> Choose the executable path to driver</span>executable_path 
+                    <span class="pl-k">=</span> {<span class="pl-s"><span class="pl-pds">'</span>executable_path<span class="pl-pds">'</span></span>: 
+                    <span class="pl-s"><span class="pl-pds">'</span>chromedriver.exe<span class="pl-pds">'</span></span>} browser 
+                    <span class="pl-k">=</span> Browser(<span class="pl-s"><span class="pl-pds">'</span>chrome<span class="pl-pds">'</span></span>, 
+                    <span class="pl-k">**</span>executable_path, <span class="pl-v">headless</span><span class="pl-k">=</span><span class="pl-c1">False</span>)</pre></div>
+<h3><a id="user-content-nasa-mars-news" class="anchor" aria-hidden="true" href="#nasa-mars-news">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NASA Mars News</h3>
+        <ul>
+            <li>Scrape the NASA Mars News Site and collect the latest News Title and Paragraph Text. Assign text to variables to reference later.</li>
+        </ul>
+        <div class="highlight highlight-source-python"><pre><span class="pl-c">
+            <span class="pl-c">#</span> Visit NASA news url through splinter module</span>news_url 
+            <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://mars.nasa.gov/news
+            <span class="pl-pds">'</span></span>browser.visit(news_url)</pre>
+        </div>
+        <div class="highlight highlight-source-python">
+            <pre><span class="pl-c"><span class="pl-c">#</span> HTML object to create a Beautiful Soup object</span>news_html 
+                <span class="pl-k">=</span> browser.html
+news_soup <span class="pl-k">=</span> bs(news_html,<span class="pl-s"><span class="pl-pds">'</span>lxml<span class="pl-pds">'</span></span>)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Retrieve elements that contains the latest news title and news_paragraph</span>
+news_title <span class="pl-k">=</span> news_soup.find(<span class="pl-s"><span class="pl-pds">'</span>div<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>content_title<span class="pl-pds">'</span></span>).text
+news_p <span class="pl-k">=</span> news_soup.find(<span class="pl-s"><span class="pl-pds">'</span>div<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>article_teaser_body<span class="pl-pds">'</span></span>).text</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Print scrapped data </span>
+<span class="pl-c1">print</span>(news_title)
+<span class="pl-c1">print</span>(news_p)</pre></div>
+<pre><code>NASA Social Media and Websites Win Webby Awards 
+NASA's social media presence, the InSight mission social media accounts, NASA.gov and SolarSystem.NASA.gov will be honored at the 2019 Webby Awards - "the Oscars of the Internet."
+</code></pre>
+<h3><a id="user-content-jpl-mars-space-images---featured-image" class="anchor" aria-hidden="true" href="#jpl-mars-space-images---featured-image"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPL Mars Space Images - Featured Image</h3>
+<ul>
+<li>Visit JPL Featured Space Image.</li>
+<li>Use splinter to navigate the site and find the image url for the current Featured Mars Image and assign the url string to a variable called featured_image_url.</li>
+</ul>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Visit Mars Space Images through splinter module</span>
+jpl_url <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://www.jpl.nasa.gov/spaceimages/?search=&amp;category=Mars<span class="pl-pds">'</span></span>
+browser.visit(jpl_url)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> HTML object to create a Beautiful Soup object</span>
+jpl_html <span class="pl-k">=</span> browser.html
+jsoup <span class="pl-k">=</span> bs(jpl_html,<span class="pl-s"><span class="pl-pds">'</span>lxml<span class="pl-pds">'</span></span>)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Retrieve background-image url from style tag and print img_link</span>
+img_link <span class="pl-k">=</span> jsoup.find(<span class="pl-s"><span class="pl-pds">'</span>div<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>carousel_container<span class="pl-pds">'</span></span>).article.footer.a[<span class="pl-s"><span class="pl-pds">'</span>data-fancybox-href<span class="pl-pds">'</span></span>]
+<span class="pl-c1">print</span>(img_link)</pre></div>
+<pre><code>/spaceimages/images/mediumsize/PIA16682_ip.jpg
+</code></pre>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Retrive base url and concatenate website url with scrapped route</span>
+base_link <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://www.jpl.nasa.gov<span class="pl-pds">'</span></span>
+featured_image_url <span class="pl-k">=</span> base_link <span class="pl-k">+</span> img_link
+
+<span class="pl-c"><span class="pl-c">#</span> Print full link to featured image</span>
+<span class="pl-c1">print</span>(featured_image_url)</pre></div>
+<pre><code>https://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA16682_ip.jpg
+</code></pre>
+<h3><a id="user-content-mars-weather" class="anchor" aria-hidden="true" href="#mars-weather"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mars Weather</h3>
+<ul>
+<li>Visit the Mars Weather twitter account and scrape the latest Mars weather tweet from the page. Save the tweet text for the weather report as a variable called mars_weather.</li>
+</ul>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Visit Mars Weather Twitter through splinter module</span>
+weather_url <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://twitter.com/marswxreport?lang=en<span class="pl-pds">'</span></span>
+browser.visit(weather_url)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> HTML object to create a Beautiful Soup object</span>
+w_html <span class="pl-k">=</span> browser.html
+wsoup <span class="pl-k">=</span> bs(w_html,<span class="pl-s"><span class="pl-pds">'</span>lxml<span class="pl-pds">'</span></span>)</pre></div>
+<div class="highlight highlight-source-python"><pre>tweets <span class="pl-k">=</span> wsoup.find_all(<span class="pl-s"><span class="pl-pds">'</span>p<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>TweetTextSize<span class="pl-pds">'</span></span>)
+<span class="pl-k">for</span> tweet <span class="pl-k">in</span> tweets:
+    weather_tweet <span class="pl-k">=</span> tweet.find(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>).previousSibling
+    <span class="pl-k">if</span> <span class="pl-s"><span class="pl-pds">'</span>sol<span class="pl-pds">'</span></span> <span class="pl-k">and</span> <span class="pl-s"><span class="pl-pds">'</span>pressure<span class="pl-pds">'</span></span> <span class="pl-k">in</span> weather_tweet:
+        <span class="pl-k">break</span>
+    <span class="pl-k">else</span>:
+        <span class="pl-k">continue</span>
+weather_tweet</pre></div>
+<pre><code>'InSight sol 144 (2019-04-23) low -98.7ºC (-145.7ºF) high -17.6ºC (0.4ºF)\nwinds from the SW at 4.2 m/s (9.5 mph) gusting to 11.1 m/s (24.8 mph)\npressure at 7.40 hPa'
+</code></pre>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span>Replace new line with , and print data</span>
+mars_weather <span class="pl-k">=</span> weather_tweet.replace(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\n</span><span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>, <span class="pl-pds">'</span></span>)
+<span class="pl-c1">print</span>(mars_weather)</pre></div>
+<pre><code>InSight sol 144 (2019-04-23) low -98.7ºC (-145.7ºF) high -17.6ºC (0.4ºF), winds from the SW at 4.2 m/s (9.5 mph) gusting to 11.1 m/s (24.8 mph), pressure at 7.40 hPa
+</code></pre>
+<h3><a id="user-content-mars-facts" class="anchor" aria-hidden="true" href="#mars-facts"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mars Facts</h3>
+<ul>
+<li>Visit the Mars Facts webpage and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.</li>
+<li>Use Pandas to convert the data to a HTML table string.</li>
+</ul>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Visit Mars facts url </span>
+fact_url <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://space-facts.com/mars/<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Use Panda's 'read_html' to parse the url</span>
+fact_table <span class="pl-k">=</span> pd.read_html(fact_url)
+
+<span class="pl-c"><span class="pl-c">#</span> Find the Mars facts table</span>
+mars_fact_table <span class="pl-k">=</span> fact_table[<span class="pl-c1">0</span>]
+mars_fact_table</pre></div>
+<div>
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Equatorial Diameter:</td>
+      <td>6,792 km</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Polar Diameter:</td>
+      <td>6,752 km</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mass:</td>
+      <td>6.42 x 10^23 kg (10.7% Earth)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Moons:</td>
+      <td>2 (Phobos &amp; Deimos)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Orbit Distance:</td>
+      <td>227,943,824 km (1.52 AU)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Orbit Period:</td>
+      <td>687 days (1.9 years)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Surface Temperature:</td>
+      <td>-153 to 20 °C</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>First Record:</td>
+      <td>2nd millennium BC</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Recorded By:</td>
+      <td>Egyptian astronomers</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Assign the columns Description and Value and use Description as index</span>
+mars_fact_table.columns <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>Description<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>Value<span class="pl-pds">'</span></span>]
+mars_fact_table</pre></div>
+<div>
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Description</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Equatorial Diameter:</td>
+      <td>6,792 km</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Polar Diameter:</td>
+      <td>6,752 km</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mass:</td>
+      <td>6.42 x 10^23 kg (10.7% Earth)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Moons:</td>
+      <td>2 (Phobos &amp; Deimos)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Orbit Distance:</td>
+      <td>227,943,824 km (1.52 AU)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Orbit Period:</td>
+      <td>687 days (1.9 years)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Surface Temperature:</td>
+      <td>-153 to 20 °C</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>First Record:</td>
+      <td>2nd millennium BC</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Recorded By:</td>
+      <td>Egyptian astronomers</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Generate HTML table from Mars facts dataframe</span>
+mars_fact_table_html <span class="pl-k">=</span> mars_fact_table.to_html (<span class="pl-v">header</span><span class="pl-k">=</span><span class="pl-c1">True</span>, <span class="pl-v">index</span><span class="pl-k">=</span><span class="pl-c1">False</span>, <span class="pl-v">justify</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span>Strip unwanted newlines to clean up the table and print</span>
+mars_fact_table_html <span class="pl-k">=</span> mars_fact_table_html.replace(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-cce">\n</span><span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>)
+<span class="pl-c1">print</span>(mars_fact_table_html)</pre></div>
+<pre><code>&lt;table border="1" class="dataframe"&gt;  &lt;thead&gt;    &lt;tr style="text-align: center;"&gt;      &lt;th&gt;Description&lt;/th&gt;      &lt;th&gt;Value&lt;/th&gt;    &lt;/tr&gt;  &lt;/thead&gt;  &lt;tbody&gt;    &lt;tr&gt;      &lt;td&gt;Equatorial Diameter:&lt;/td&gt;      &lt;td&gt;6,792 km&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Polar Diameter:&lt;/td&gt;      &lt;td&gt;6,752 km&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Mass:&lt;/td&gt;      &lt;td&gt;6.42 x 10^23 kg (10.7% Earth)&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Moons:&lt;/td&gt;      &lt;td&gt;2 (Phobos &amp;amp; Deimos)&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Orbit Distance:&lt;/td&gt;      &lt;td&gt;227,943,824 km (1.52 AU)&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Orbit Period:&lt;/td&gt;      &lt;td&gt;687 days (1.9 years)&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Surface Temperature:&lt;/td&gt;      &lt;td&gt;-153 to 20 °C&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;First Record:&lt;/td&gt;      &lt;td&gt;2nd millennium BC&lt;/td&gt;    &lt;/tr&gt;    &lt;tr&gt;      &lt;td&gt;Recorded By:&lt;/td&gt;      &lt;td&gt;Egyptian astronomers&lt;/td&gt;    &lt;/tr&gt;  &lt;/tbody&gt;&lt;/table&gt;
+</code></pre>
+<h3><a id="user-content-mars-hemispheres" class="anchor" aria-hidden="true" href="#mars-hemispheres"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mars Hemispheres</h3>
+<ul>
+<li>Visit the USGS Astrogeology site to obtain high resolution images for each of Mar's hemispheres.</li>
+</ul>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> Visit hemispheres website through splinter module </span>
+hem_url <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&amp;k1=target&amp;v1=Mars<span class="pl-pds">'</span></span>
+browser.visit(hem_url)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> HTML object to create a Beautiful Soup object</span>
+hem_html <span class="pl-k">=</span> browser.html
+hsoup <span class="pl-k">=</span> bs(hem_html,<span class="pl-s"><span class="pl-pds">'</span>lxml<span class="pl-pds">'</span></span>)</pre></div>
+<div class="highlight highlight-source-python"><pre><span class="pl-c"><span class="pl-c">#</span> # Retreive all items that contain mars hemispheres information</span>
+items <span class="pl-k">=</span> hsoup.find_all(<span class="pl-s"><span class="pl-pds">'</span>div<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>item<span class="pl-pds">'</span></span>)
+
+<span class="pl-c"><span class="pl-c">#</span> Create empty list for hemisphere urls </span>
+hemisphere_image_urls <span class="pl-k">=</span> []
+
+<span class="pl-c"><span class="pl-c">#</span> Store the main_ul </span>
+hemispheres_main_url <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>https://astrogeology.usgs.gov<span class="pl-pds">'</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> Loop through the items</span>
+<span class="pl-k">for</span> i <span class="pl-k">in</span> items: 
+    <span class="pl-c"><span class="pl-c">#</span> Store title</span>
+    title <span class="pl-k">=</span> i.find(<span class="pl-s"><span class="pl-pds">'</span>h3<span class="pl-pds">'</span></span>).text.strip(<span class="pl-s"><span class="pl-pds">'</span> Enhanced<span class="pl-pds">'</span></span>)
+    
+    <span class="pl-c"><span class="pl-c">#</span> Store link that leads to full image website</span>
+    partial_img_url <span class="pl-k">=</span> i.find(<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>itemLink product-item<span class="pl-pds">'</span></span>)[<span class="pl-s"><span class="pl-pds">'</span>href<span class="pl-pds">'</span></span>]
+    
+    <span class="pl-c"><span class="pl-c">#</span> Visit the link that contains the full image website </span>
+    browser.visit(hemispheres_main_url <span class="pl-k">+</span> partial_img_url)
+    
+    <span class="pl-c"><span class="pl-c">#</span> HTML Object of individual hemisphere information website </span>
+    partial_img_html <span class="pl-k">=</span> browser.html
+    
+    <span class="pl-c"><span class="pl-c">#</span> Parse HTML with Beautiful Soup for every individual hemisphere information website </span>
+    hsoup <span class="pl-k">=</span> bs(partial_img_html,<span class="pl-s"><span class="pl-pds">'</span>lxml<span class="pl-pds">'</span></span>)
+    
+    <span class="pl-c"><span class="pl-c">#</span> Retrieve full image source </span>
+    img_url <span class="pl-k">=</span> hemispheres_main_url <span class="pl-k">+</span> hsoup.find(<span class="pl-s"><span class="pl-pds">'</span>img<span class="pl-pds">'</span></span>, <span class="pl-v">class_</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>wide-image<span class="pl-pds">'</span></span>)[<span class="pl-s"><span class="pl-pds">'</span>src<span class="pl-pds">'</span></span>]
+    
+    <span class="pl-c"><span class="pl-c">#</span> Append the retreived information into a list of dictionaries </span>
+    hemisphere_image_urls.append({<span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span> : title, <span class="pl-s"><span class="pl-pds">"</span>img_url<span class="pl-pds">"</span></span> : img_url})
+
+<span class="pl-c"><span class="pl-c">#</span> Print hemisphere_image_urls</span>
+<span class="pl-c1">print</span>(hemisphere_image_urls)</pre></div>
+<pre><code>[{'title': 'Cerberus Hemispher', 'img_url': 'https://astrogeology.usgs.gov/cache/images/cfa62af2557222a02478f1fcd781d445_cerberus_enhanced.tif_full.jpg'}, {'title': 'Schiaparelli Hemispher', 'img_url': 'https://astrogeology.usgs.gov/cache/images/3cdd1cbf5e0813bba925c9030d13b62e_schiaparelli_enhanced.tif_full.jpg'}, {'title': 'Syrtis Major Hemispher', 'img_url': 'https://astrogeology.usgs.gov/cache/images/ae209b4e408bb6c3e67b6af38168cf28_syrtis_major_enhanced.tif_full.jpg'}, {'title': 'Valles Marineris Hemispher', 'img_url': 'https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg'}]
+</code></pre>
+<h2><a id="user-content-final-application" class="anchor" aria-hidden="true" href="#final-application"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Final Application</h2>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/yduong3/Winter2019_Data_Analytics/tree/master/10_Web_Scrapping_and_Document_Databases"><img src="Images/final_application.jpg" alt="final_application" style="max-width:100%;"></a></p>
+</article>
+      </div>
+
+</body>
+</html>
