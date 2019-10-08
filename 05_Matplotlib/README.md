@@ -1,86 +1,407 @@
-# Unit 5 | Assignment - The Power of Plots
 
-## Background
+## Pyber Observable Trends Based on the Data
+* The law of supply and demand is evident in the relationship between city type, the number of drivers, as well as the number of rides and fares.
+* The more drivers there are, the more rides and the lower the fare is.
+* Drivers in urban cities dominate with 81% of the total drivers, making up 68% of total rides, but only 63% of total fares.
+* Drivers in rural cities are lacking with only 3% of the total drivers, making up 5% of total rides, but contributing 7% of the total fare.
+* The most surprising are suburban city drivers making up 17% of the total drivers, but contributing 26% of the total rides, making up 31% of the total fares.
 
-What good is data without a good plot to tell the story?
 
-So, let's take what you've learned about Python Matplotlib and apply it to some real-world situations. For this assignment, you'll need to complete **1 of 2** Data Challenges. As always, it's your choice which you complete. _Perhaps_, choose the one most relevant to your future career.
+```python
+%matplotlib inline
+# Dependencies and Setup
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
 
-## Option 1: Pyber
+# File to Load (Remember to change these)
+city_data_to_load = "data/city_data.csv"
+ride_data_to_load = "data/ride_data.csv"
 
-![Ride](Images/Ride.png)
+# Read the City and Ride Data
+city_data_df = pd.read_csv(city_data_to_load)
+ride_data_df = pd.read_csv(ride_data_to_load)
+```
 
-The ride sharing bonanza continues! Seeing the success of notable players like Uber and Lyft, you've decided to join a fledgling ride sharing company of your own. In your latest capacity, you'll be acting as Chief Data Strategist for the company. In this role, you'll be expected to offer data-backed guidance on new opportunities for market differentiation.
 
-You've since been given access to the company's complete recordset of rides. This contains information about every active driver and historic ride, including details like city, driver count, individual fares, and city type.
+```python
+city_data_df.head()
+```
 
-Your objective is to build a [Bubble Plot](https://en.wikipedia.org/wiki/Bubble_chart) that showcases the relationship between four key variables:
 
-* Average Fare ($) Per City
-* Total Number of Rides Per City
-* Total Number of Drivers Per City
-* City Type (Urban, Suburban, Rural)
 
-In addition, you will be expected to produce the following three pie charts:
 
-* % of Total Fares by City Type
-* % of Total Rides by City Type
-* % of Total Drivers by City Type
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-As final considerations:
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-* You must use the Pandas Library and the Jupyter Notebook.
-* You must use the Matplotlib library.
-* You must include a written description of three observable trends based on the data.
-* You must use proper labeling of your plots, including aspects like: Plot Titles, Axes Labels, Legend Labels, Wedge Percentages, and Wedge Labels.
-* Remember when making your plots to consider aesthetics!
-  * You must stick to the Pyber color scheme (Gold, Light Sky Blue, and Light Coral) in producing your plot and pie charts.
-  * When making your Bubble Plot, experiment with effects like `alpha`, `edgecolor`, and `linewidths`.
-  * When making your Pie Chart, experiment with effects like `shadow`, `startangle`, and `explosion`.
-* See [Starter Workbook](Pyber/pyber_starter.ipynb) for a reference on expected format.
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>driver_count</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Richardfort</td>
+      <td>38</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Williamsstad</td>
+      <td>59</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Port Angela</td>
+      <td>67</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rodneyfort</td>
+      <td>34</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>West Robert</td>
+      <td>39</td>
+      <td>Urban</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-## Option 2: Pymaceuticals Inc
 
-![Laboratory](Images/Laboratory.jpg)
 
-While your data companions rushed off to jobs in finance and government, you remained adamant that science was the way for you. Staying true to your mission, you've since joined Pymaceuticals Inc., a burgeoning pharmaceutical company based out of San Diego, CA. Pymaceuticals specializes in drug-based, anti-cancer pharmaceuticals. In their most recent efforts, they've since begun screening for potential treatments to squamous cell carcinoma (SCC), a commonly occurring form of skin cancer.
 
-As their Chief Data Analyst, you've been given access to the complete data from their most recent animal study. In this study, 250 mice were treated through a variety of drug regimes over the course of 45 days. Their physiological responses were then monitored over the course of that time. Your objective is to analyze the data to show how four treatments (Capomulin, Infubinol, Ketapril, and Placebo) compare.
+```python
+ride_data_df.head()
+```
 
-To do this you are tasked with:
 
-* Creating a scatter plot that shows how the tumor volume changes over time for each treatment.
-* Creating a scatter plot that shows how the number of [metastatic](https://en.wikipedia.org/wiki/Metastasis) (cancer spreading) sites changes over time for each treatment.
-* Creating a scatter plot that shows the number of mice still alive through the course of treatment (Survival Rate)
-* Creating a bar graph that compares the total % tumor volume change for each drug across the full 45 days.
 
-As final considerations:
 
-* You must use the Pandas Library and the Jupyter Notebook.
-* You must use the Matplotlib library.
-* You must include a written description of three observable trends based on the data.
-* You must use proper labeling of your plots, including aspects like: Plot Titles, Axes Labels, Legend Labels, X and Y Axis Limits, etc.
-* Your scatter plots must include [error bars](https://en.wikipedia.org/wiki/Error_bar). This will allow the company to account for variability between mice. You may want to look into [`pandas.DataFrame.sem`](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sem.html) for ideas on how to calculate this.
-* Remember when making your plots to consider aesthetics!
-  * Your legends should not be overlaid on top of any data.
-  * Your bar graph should indicate tumor growth as red and tumor reduction as green.
-    It should also include a label with the percentage change for each bar. You may want to consult this [tutorial](http://composition.al/blog/2015/11/29/a-better-way-to-add-labels-to-bar-charts-with-matplotlib/) for relevant code snippets.
-* See [Starter Workbook](Pymaceuticals/pymaceuticals_starter.ipynb) for a reference on expected format. (Note: For this example, you are not required to match the tables or data frames included. Your only goal is to build the scatter plots and bar graphs. Consider the tables to be potential clues, but feel free to approach this problem, however, you like.)
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-## Hints and Considerations
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-* Be warned: These are very challenging tasks. Be patient with yourself as you trudge through these problems. They will take time and there is no shame in fumbling along the way. Data visualization is equal parts exploration, equal parts resolution.
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>fare</th>
+      <th>ride_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lake Jonathanshire</td>
+      <td>2018-01-14 10:14:22</td>
+      <td>13.83</td>
+      <td>5739410935873</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>South Michelleport</td>
+      <td>2018-03-04 18:24:09</td>
+      <td>30.24</td>
+      <td>2343912425577</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Port Samanthamouth</td>
+      <td>2018-02-24 04:29:00</td>
+      <td>33.44</td>
+      <td>2005065760003</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rodneyfort</td>
+      <td>2018-02-10 23:22:03</td>
+      <td>23.44</td>
+      <td>5149245426178</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>South Jack</td>
+      <td>2018-03-06 04:28:35</td>
+      <td>34.58</td>
+      <td>3908451377344</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-* You have been provided a starter notebook. Use the code comments as a **guideline** of steps you may wish to follow as you complete the assignment. You do not have to follow them step-for-step. Do not get bogged down in trying to interpret and accomplish each step.
 
-* Between these two exercises, the Pymaceuticals one is significantly more challenging. So choose that one only if you feel somewhat comfortable with the material covered so far. The Pymaceuticals example _will_ require you to research a good bit on your own for hacked solutions to problems you'll experience along the way. If you end up choosing this exercise, feel encouraged to constantly refer to Stack Overflow and the Pandas Documentation. These are needed tools in every data analyst's arsenal.
 
-* Don't get bogged down in small details. Always focus on the big picture. If you can't figure out how to get a label to show up correctly, come back to it. Focus on getting the core skeleton of your notebook complete. You can always re-visit old problems.
 
-* Remember: There are many ways to skin a cat, and similarly there are many ways to approach a data problem. The key throughout, however, is to break up your task into micro tasks. Try answering questions like: "How does my Data Frame need to be structured for me to have the right X and Y axis?" "How do I build a basic scatter plot?" "How do I add a label to that scatter plot?" "Where would the labels for that scatter plot come from?". Again! Don't let the magnitude of a programming task scare you off. Ultimately, every programming problem boils down to a handful of smaller, bite-sized tasks.
+```python
+# Combine the data into a single dataset
+pyber_df = pd.merge(ride_data_df, city_data_df, on="city")
 
-* Get help when you need it! There is never any shame in asking. But as always, ask a _specific_ question. You'll never get a great answer to: "I'm lost." Good luck!
+# Display the data table for preview
+pyber_df.drop_duplicates("city").reset_index(drop=True).head()
+```
 
-## Copyright
 
-Data Boot Camp © 2018. All Rights Reserved.
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>city</th>
+      <th>date</th>
+      <th>fare</th>
+      <th>ride_id</th>
+      <th>driver_count</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lake Jonathanshire</td>
+      <td>2018-01-14 10:14:22</td>
+      <td>13.83</td>
+      <td>5739410935873</td>
+      <td>5</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>South Michelleport</td>
+      <td>2018-03-04 18:24:09</td>
+      <td>30.24</td>
+      <td>2343912425577</td>
+      <td>72</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Port Samanthamouth</td>
+      <td>2018-02-24 04:29:00</td>
+      <td>33.44</td>
+      <td>2005065760003</td>
+      <td>57</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rodneyfort</td>
+      <td>2018-02-10 23:22:03</td>
+      <td>23.44</td>
+      <td>5149245426178</td>
+      <td>34</td>
+      <td>Urban</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>South Jack</td>
+      <td>2018-03-06 04:28:35</td>
+      <td>34.58</td>
+      <td>3908451377344</td>
+      <td>46</td>
+      <td>Urban</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Bubble Plot of Ride Sharing Data
+
+
+```python
+#create variables for city type, used for scatter plot
+urban = pyber_df[pyber_df["type"] == "Urban"]
+suburban = pyber_df[pyber_df["type"] == "Suburban"]
+rural = pyber_df[pyber_df["type"] == "Rural"]
+```
+
+
+```python
+# Obtain the x and y coordinates for each of the three city types
+urban_ride_count = urban.groupby(["city"])["ride_id"].count()
+urban_fare_avg = urban.groupby(["city"])["fare"].mean()
+urban_driver_count = urban.groupby(["city"])["driver_count"].mean()
+
+suburban_ride_count = suburban.groupby(["city"])["ride_id"].count()
+suburban_fare_avg = suburban.groupby(["city"])["fare"].mean()
+suburban_driver_count = suburban.groupby(["city"])["driver_count"].mean()
+
+rural_ride_count = rural.groupby(["city"])["ride_id"].count()
+rural_fare_avg = rural.groupby(["city"])["fare"].mean()
+rural_driver_count = rural.groupby(["city"])["driver_count"].mean()
+
+# Build the scatter plots for each city types
+plt.scatter(urban_ride_count, urban_fare_avg, s = urban_driver_count*10,
+            color = "coral", edgecolor = "black", label = "Urban", alpha = 0.75)
+
+plt.scatter(suburban_ride_count, suburban_fare_avg, s = suburban_driver_count*10,
+            color = "lightskyblue", edgecolor = "black", label = "Suburban", alpha = 0.75)
+
+plt.scatter(rural_ride_count, rural_fare_avg, s = rural_driver_count*10,
+            color = "gold", edgecolor = "black", label = "Rural", alpha = 0.75)
+
+# Incorporate the other graph properties
+plt.xlim(1, 41)
+plt.ylim(18.9,44.5)
+
+plt.title("Pyber Ride Sharing Data (2016)")
+plt.xlabel("Total Number of Riders (Per City)")
+plt.ylabel("Average Fare ($)")
+plt.grid(True)
+
+# Create a legend
+lgnd = plt.legend(loc="best", title="City Types", fontsize="small")
+lgnd.legendHandles[0]._sizes = [30]
+lgnd.legendHandles[1]._sizes = [30]
+lgnd.legendHandles[2]._sizes = [30]
+
+# Incorporate a text label regarding circle size
+plt.annotate("Note: \nCircle size correlates with driver count per city.", xy=(30, 40), xytext=(42, 35))
+
+# Show plot
+plt.show()
+```
+
+
+![png](output_7_0.png)
+
+
+## Total Fares by City Type
+
+
+```python
+# Calculate Type Fares
+total_fare = pyber_df.groupby("type")["fare"].sum()
+
+# Build Pie Chart
+city_type = ["Rural", "Suburban", "Urban"]
+colors = ["gold", "lightskyblue", "coral"]
+explode = (0, 0, 0.1)
+
+plt.title("% of Total Fares by City Type")
+
+plt.pie(total_fare, explode = explode, labels = city_type, colors = colors,
+        autopct = "%1.1f%%", shadow = True, startangle = 145)
+
+plt.axis("equal")
+
+# Save Figure
+plt.savefig("pyber_totalfarescitytype_pie.png")
+
+# Show Figure
+plt.show()
+```
+
+
+![png](output_9_0.png)
+
+
+## Total Rides by City Type
+
+
+```python
+# Calculate Type Fares
+total_ride = pyber_df.groupby("type")["ride_id"].count()
+
+# Build Pie Chart
+city_type = ["Rural", "Suburban", "Urban"]
+colors = ["gold", "lightskyblue", "coral"]
+explode = (0, 0, 0.1)
+
+plt.title("% of Total Rides by City Type")
+
+plt.pie(total_ride, explode = explode, labels = city_type, colors = colors,
+        autopct = "%1.1f%%", shadow = True, startangle = 150)
+
+plt.axis("equal")
+
+# Save Figure
+plt.savefig("pyber_totalridescitytype_pie.png")
+
+# Show Figure
+plt.show()
+```
+
+
+![png](output_11_0.png)
+
+
+## Total Drivers by City Type
+
+
+```python
+# Calculate Driver Percents
+total_drivers = city_data_df.groupby("type")["driver_count"].sum()
+
+# Build Pie Chart
+city_type = ["Rural", "Suburban", "Urban"]
+colors = ["gold", "lightskyblue", "coral"]
+explode = (0, 0, 0.1)
+
+plt.title("% of Total Drivers by City Type")
+
+plt.pie(total_drivers, explode = explode, labels = city_type, colors = colors,
+        autopct = "%1.1f%%", shadow = True, startangle = 160)
+
+plt.axis("equal")
+
+# Save Figure
+plt.savefig("pyber_totaldriverscitytype_pie.png")
+
+# Show Figure
+plt.show()
+```
+
+
+![png](output_13_0.png)
+
